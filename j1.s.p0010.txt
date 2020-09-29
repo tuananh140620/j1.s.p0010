@@ -1,0 +1,71 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package j1.s.p0010;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author TuanAnhh
+ */
+public class LinearSearch {
+        /**
+     * Hiển thị phần tử ra màn hình
+     */
+    public void displayArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {  //xét duyệt phần tử từ 0->số lượng phần tử ar
+            System.out.print(arr[i]);           //hiển thị ra các phần tử
+            if (i < arr.length - 1) {       //in ra dấu phẩy trừ phần tử cuối cùng
+                System.out.print(", ");     
+            }
+        }
+        System.out.print("]");
+    }
+    /**
+     * Tìm kiếm phần tử tuần tự
+     */
+    public int linerSearch(int[] arr, int key) {
+
+        int size = arr.length;
+        for (int i = 0; i < size; i++) {//duyệt từ đầu phần tử đến cuối để tìm
+            if (arr[i] == key) {        //Tìm kiếm vị trí index của phần tử trong array
+                return i;
+            }
+        }
+        return -1;                      //nếu không tìm thấy thì sẽ return lại -1
+    }
+     /**
+     * @param args the command line arguments
+     */
+    public void length(int[] array){
+        for (int i = 0; i < array.length; i++) {    //để biết kích cỡ của mảng để nhập vào
+            array[i] = new Random().nextInt(10)+1;  //để chọn số ngẫu nhiên ghi vào array
+        }
+       
+    }
+    public static void main(String[] args) {
+        LinearSearch searcher = new LinearSearch();     //Đặt tên và gọi ra từ lớp
+        Scanner scanner = new Scanner(System.in);       //Nhập dữ liệu vào
+        
+        System.out.println("Enter number of array:");
+        int length = scanner.nextInt();                 //lấy giá trịvào length
+        int[] array = new int[length];                  //đặt tên 
+        searcher.length(array);                          //gọi hàm length để xét duyệt phần tử                            
+        
+        System.out.println("Enter search value:");
+        int search = scanner.nextInt();                  //lấy giá trị vào tìm giá trị muốn search
+
+        System.out.print("The array: ");
+        searcher.displayArray(array);                   // hiển thi array random
+
+        int foundIndex = searcher.linerSearch(array, search);   //dùng search vào hàm để tìm kiếm
+        System.out.println("\nFound " + search + " at index: " + foundIndex);   //in ra giá trị của nó
+   }
+}
+    
+
